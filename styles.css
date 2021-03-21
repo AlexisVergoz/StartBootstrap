@@ -1,0 +1,275 @@
+:root {
+    --gris: #2C3E50;
+    /* La variable "gris" contient #2C3E50 */
+    --vert: #18BC9C;
+    --gris-fonce: #1A252F;
+    --padding: 0 10%;
+    font-size: 14px;
+}
+
+body {
+    /* On retire les marges par défaut du navigateur */
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+/* On supprime la marge sous les h1 */
+h1 {
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0.5rem;
+}
+
+nav {
+    /* On met la couleur de fond */
+    background-color: var(--gris);
+
+    /* On met les éléments côte à côte */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* On place le padding droit et gauche */
+    padding: var(--padding);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav li {
+    display: inline;
+    margin-left: 30px;
+}
+
+header {
+    background-color: var(--vert);
+    height: 100vh;
+    color: white;
+    text-align: center;
+}
+
+header section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+header section h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+
+header section p {
+    font-size: 2rem;
+}
+
+/* Etoile -> Pseudo élément */
+/* Elément qui n'existe pas dans le HTML */
+header h1+p,
+main h1+p {
+    position: relative;
+    font-size: 2rem;
+}
+
+/* La balise p qui suit un h1 dans header et main */
+header h1+p::before,
+main h1+p::before {
+    /* IMPORTANT: dans un pseudo élément on a TOUJOURS une propriété "content" */
+    content: "";
+    background-color: white;
+    width: 100px;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    /* Calcul de 50% de la largeur - 120px */
+    left: calc(50% - 120px);
+    transform: translateY(-50%);
+}
+
+/* La balise p qui suit un h1 dans header et main */
+header h1+p::after,
+main h1+p::after {
+    /* IMPORTANT: dans un pseudo élément on a TOUJOURS une propriété "content" */
+    content: "";
+    background-color: white;
+    width: 100px;
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    /* Calcul de 50% de la largeur - 120px */
+    right: calc(50% - 120px);
+    transform: translateY(-50%);
+}
+
+/* Bordure au survol */
+/* main{
+    margin-top: 10px;
+}
+
+main section:first-child h1{
+    position: relative;
+    width: max-content;
+    margin: auto;
+    background-color: silver;
+}
+main section:first-child h1::before{
+    content: "";
+    background-color: red;
+    position: absolute;
+    height: 0;
+    width: 0;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+    transition: 2s;
+}
+main section:first-child h1:hover::before{
+    content: "";
+    background-color: red;
+    position: absolute;
+    height: calc(100% + 4px);
+    width: calc(100% + 4px);
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+} */
+
+main {
+    text-align: center;
+}
+
+/* Les sections impaires (odd) enfant de main */
+main>section:nth-child(odd) {
+    color: var(--gris);
+}
+
+main h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+main>section:nth-child(odd) h1+p::before,
+main>section:nth-child(odd) h1+p::after {
+    background-color: var(--gris);
+}
+
+main>section:first-child {
+    padding: var(--padding);
+    padding-bottom: 50px;
+}
+
+/* Portfolio -> Grille */
+main>section:first-child section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* équivalent à 1fr 1fr 1fr */
+    gap: 25px;
+}
+
+main>section:first-child img {
+    width: 100%;
+}
+
+/* About */
+main>section:nth-child(2) {
+    background-color: var(--vert);
+    padding: 50px 20%;
+}
+
+main>section:nth-child(2) p:nth-of-type(2) {
+    column-count: 2;
+    text-align: left;
+    column-gap: 30px;
+    line-height: 1.7;
+}
+
+main>section:nth-child(2) p:last-of-type {
+    margin-top: 50px;
+}
+
+main>section:nth-child(2) a {
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+/* Contact */
+form {
+    text-align: left;
+    padding: 0 20%;
+}
+
+input,
+textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    margin-bottom: 25px;
+    resize: none;
+}
+
+button {
+    background-color: var(--vert);
+    padding: 15px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Footer */
+footer>section:first-child {
+    background-color: var(--gris);
+    display: flex;
+    padding: 50px 10%;
+    text-align: center;
+}
+
+footer>section:first-child section {
+    flex: 1;
+}
+footer a{
+    color: var(--vert);
+}
+footer ul{
+    padding: 0;
+}
+
+footer li{
+    display: inline;
+    margin: 0 10px;
+}
+
+footer li a{
+    color: white;
+    font-size: 2rem;
+}
+footer i{
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+footer > section:last-child{
+    background-color: var(--gris-fonce);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
